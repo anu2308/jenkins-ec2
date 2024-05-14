@@ -6,16 +6,16 @@ pipeline {
 
    agent  any
     stages {
-        stage('checkout') {
-            steps {
-                 script{
-                        dir("terraform")
-                        {
-                            git (url: "https://github.com/anu2308/jenkins-ec2.git" branch: 'main')
-                      }
-                    }
+        stage('Checkout code') {
+        steps {
+            script{
+                dir("terraform"){
+                        checkout scm
                 }
             }
+            
+        }
+    }
 
         stage('Plan') {
             steps {
